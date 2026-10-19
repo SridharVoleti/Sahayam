@@ -47,5 +47,35 @@ class PayloadTests(unittest.TestCase):
     def test_trip_index_out_of_range(self):
         self.assertFalse(verify_trip(plan_payload(self.task), 3, 1, 1, self.stability))
 
+    def test_seven_kg_cooker_refuses_undersized_arm(self):
+        cooker = replace(self.task, total_mass_kg=7, divisible=False,
+                         trip_capacity_kg=10, manipulator_capacity_kg=1,
+                         handling_mode="robot_lift")
+        self.assertEqual(plan_payload(cooker).reason, "indivisible_overweight")
+
+    def test_seven_kg_cooker_on_secured_platform_is_plannable(self):
+        cooker = replace(self.task, total_mass_kg=7, divisible=False,
+                         trip_capacity_kg=10, manipulator_capacity_kg=0,
+                         handling_mode="preloaded_tray", tray_load_secured=True)
+        plan = plan_payload(cooker)
+        self.assertTrue(plan.permitted)
+        self.assertEqual(plan.trip_masses_kg, (7,))
+
+    def test_cooker_platform_must_be_secured(self):
+        cooker = replace(self.task, total_mass_kg=7, divisible=False,
+                         trip_capacity_kg=10, handling_mode="preloaded_tray")
+        self.assertEqual(plan_payload(cooker).reason, "tray_load_not_secured")
+
+    def test_hot_cooker_refused(self):
+        self.assertEqual(plan_payload(replace(self.task, hot_load=True)).reason,
+                         "hot_load_not_supported")
+
+    def test_liquid_cooker_needs_dynamic_validation(self):
+        self.assertEqual(plan_payload(replace(self.task, liquid_load=True)).reason,
+                         "liquid_dynamics_not_verified")
+
+    def test_unknown_handling_mode_fails_closed(self):
+        self.assertFalse(plan_payload(replace(self.task, handling_mode="magic")).permitted)
+
 if __name__ == "__main__":
     unittest.main()
