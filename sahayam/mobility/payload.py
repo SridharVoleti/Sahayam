@@ -17,6 +17,11 @@ class PayloadTask:
     load_center_height_m: float = 0.0
     stability: StabilityState | None = None
     maximum_trips: int = 100
+    handling_mode: str = "robot_lift"  # or "preloaded_tray"
+    tray_load_secured: bool = False
+    hot_load: bool = False
+    liquid_load: bool = False
+    liquid_transport_validated: bool = False
 
 @dataclass(frozen=True)
 class PayloadPlan:
@@ -31,17 +36,29 @@ def plan_payload(task: PayloadTask) -> PayloadPlan:
             task.manipulator_capacity_kg, task.load_center_height_m)
     if not all(isfinite(v) for v in vals) or task.total_mass_kg <= 0 or min(vals[1:]) < 0:
         return blocked("invalid_payload_data")
+    if task.handling_mode not in ("robot_lift", "preloaded_tray"):
+        return blocked("unsupported_handling_mode")
+    # A hot cooker needs separate thermal, gripping and human-proximity safety.
+    if task.hot_load:
+        return blocked("hot_load_not_supported")
+    if task.liquid_load and not task.liquid_transport_validated:
+        return blocked("liquid_dynamics_not_verified")
     if not task.measured_mass:
         return blocked("mass_not_verified")
-    if task.trip_capacity_kg <= 0 or task.manipulator_capacity_kg <= 0:
-        return blocked("capacity_not_verified")
+    if task.trip_capacity_kg <= 0:
+        return blocked("transport_capacity_not_verified")
+    if task.handling_mode == "robot_lift" and task.manipulator_capacity_kg <= 0:
+        return blocked("lift_capacity_not_verified")
+    if task.handling_mode == "preloaded_tray" and not task.tray_load_secured:
+        return blocked("tray_load_not_secured")
     if task.stability is None:
         return blocked("stability_not_verified")
     if not evaluate_stability(task.stability).motion_permitted:
         return blocked("stability_margin_inadequate")
     if task.load_center_height_m > task.stability.center_of_mass_height_m:
         return blocked("loaded_center_of_mass_not_verified")
-    capacity = min(task.trip_capacity_kg, task.manipulator_capacity_kg)
+    capacity = (min(task.trip_capacity_kg, task.manipulator_capacity_kg)
+                if task.handling_mode == "robot_lift" else task.trip_capacity_kg)
     if not task.divisible and task.total_mass_kg > capacity:
         return blocked("indivisible_overweight")
     n = ceil(task.total_mass_kg / capacity) if task.divisible else 1
