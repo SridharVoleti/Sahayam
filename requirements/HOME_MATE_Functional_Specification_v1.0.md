@@ -1,0 +1,311 @@
+# HOME-MATE Functional Requirements Baseline v1.0
+
+**271 parent requirements; 542 atomic verification checks; 20 priority simulation scenarios.**
+
+## Baseline governance
+All user-reviewed functional requirements are accepted, including MOB-011 multi-trip loads, cable payout/retraction, configurable cable length, shared active cooling, alternate-day wet scrubbing, 300 executable recipes and autonomous specialized cleaning tools. Acceptance of requirement wording is **not** validation of a physical design, safety claim or test pass.
+
+## Development order
+1. Shared 70% platform; 2. Kitchen reference implementation; 3. Clean; 4. Laundry; 5. integrated household simulation.
+
+## Acceptance gates
+- Gate 0: requirement IDs, dependencies and tests documented.
+- Gate 1: simulation scenarios have explicit measurable oracles, fault injection and evidence.
+- Gate 2: model/simulation tests pass with documented fidelity and assumptions.
+- Gate 3: independent safety engineering review for physical build.
+- Gate 4: physical validation separately; no simulated cooking recipe counted as physically demonstrated.
+
+## Full parent requirements
+- **GOV-001** (Shared): 70/30 platform reuse. **Acceptance:** Common interfaces and reusable capabilities are tracked; specialization does not bypass safety
+- **GOV-002** (Shared): Kitchen-first implementation. **Acceptance:** Kitchen is first reference robot; Clean second; Laundry third
+- **GOV-003** (Shared): Safety-first behavior. **Acceptance:** Safety takes precedence over throughput and task completion
+- **GOV-004** (Shared): Requirements traceability. **Acceptance:** Every implementation and test maps to a unique requirement ID
+- **GOV-005** (Shared): Controlled changes. **Acceptance:** Changes have rationale, version, reviewer and regression impact
+- **GOV-006** (Shared): Patent review gate. **Acceptance:** Finished inventions receive prior-art review before public disclosure; file only if warranted
+- **GOV-007** (Shared): 2027 simulation objective. **Acceptance:** Integrated household software simulation covers all three robot workflows by December 2027
+- **GOV-008** (Shared): 2033 physical objective. **Acceptance:** All three robot workflows are target physical capabilities by December 2033
+- **GOV-009** (Shared): No false completion. **Acceptance:** Unverified work is reported pending or failed, never completed
+- **GOV-010** (Shared): Child participation safeguards. **Acceptance:** Child learning tasks exclude hazardous mains, blades, hot appliances and unreviewed hardware
+- **MOB-001** (Shared): Four wheel configuration. **Acceptance:** Robot has four wheels
+- **MOB-002** (Shared): Front steering. **Acceptance:** Only front wheels steer, coordinated with validated geometry
+- **MOB-003** (Shared): Rear fixed steering. **Acceptance:** Rear wheels do not steer
+- **MOB-004** (Shared): 75 degree steering target. **Acceptance:** Inner/equivalent wheel angle is defined and feasible without interference
+- **MOB-005** (Shared): Cruise speed. **Acceptance:** Target 0.8 m/s on approved clear routes, subject to load and safety
+- **MOB-006** (Shared): Speed reduction. **Acceptance:** Robot slows near humans, turns, liquid loads and obstacles
+- **MOB-007** (Shared): Reverse travel. **Acceptance:** Robot can reverse safely with rear obstacle sensing
+- **MOB-008** (Shared): Multi-point turning. **Acceptance:** Robot performs feasible forward/reverse turns in narrow areas
+- **MOB-009** (Shared): Doorway clearance. **Acceptance:** Robot verifies passage dimensions including arms, load and cable
+- **MOB-010** (Shared): Anti-tip monitoring. **Acceptance:** Robot inhibits motion when projected stability margin is inadequate
+- **MOB-011** (Shared): Adaptive multi-trip payload transport. **Acceptance:** Estimate load, enforce each relevant payload/stability limit, split divisible tasks into safe batches and verify all trips; do not lift an indivisible overweight item
+- **MOB-012** (Shared): Uneven floor transitions. **Acceptance:** Robot detects thresholds and refuses unsupported crossings
+- **MOB-013** (Shared): Slippery surface response. **Acceptance:** Robot reduces motion or stops when traction confidence is low
+- **MOB-014** (Shared): Localization loss. **Acceptance:** Robot stops safely and recovers localization
+- **MOB-015** (Shared): Collision avoidance. **Acceptance:** Robot avoids stationary and moving obstacles
+- **MOB-016** (Shared): Route replanning. **Acceptance:** Blocked routes are replanned without unsafe shortcuts
+- **MOB-017** (Shared): Shared corridor coordination. **Acceptance:** Robots negotiate narrow passages without deadlock
+- **MOB-018** (Shared): Parking pose. **Acceptance:** Robot parks without obstructing exits or circulation
+- **MOB-019** (Shared): Arm stow for travel. **Acceptance:** Arms/tools enter travel-safe configuration
+- **MOB-020** (Shared): Emergency braking. **Acceptance:** Emergency stop prioritizes human safety over spill containment
+- **PWR-001** (Shared): 230 V mains tether. **Acceptance:** Power system is treated as hazardous and isolated from accessible surfaces
+- **PWR-002** (Shared): Configurable safe cable length. **Acceptance:** Select and validate robot-specific cable length and route; Kitchen evaluate 15–20 m, other variants up to 50 m subject to electrical/thermal approval
+- **PWR-003** (Shared): Automatic cable payout. **Acceptance:** Pay out cable as routed distance increases while maintaining safe controlled tension
+- **PWR-004** (Shared): Automatic cable retraction. **Acceptance:** Retract excess cable as routed distance decreases without pulling robot, whipping cable or endangering people
+- **PWR-005** (Shared): Cable route tracking. **Acceptance:** Robot tracks cable path and avoids crossing or entanglement
+- **PWR-006** (Shared): Cable snag detection. **Acceptance:** Excess tension triggers controlled stop
+- **PWR-007** (Shared): Cable under wheels. **Acceptance:** Robot prevents driving over or trapping its own tether
+- **PWR-008** (Shared): Water near electrics. **Acceptance:** Wet-zone electrical risk causes protective stop/isolation
+- **PWR-009** (Shared): Mains loss. **Acceptance:** Mains outage triggers controlled stop with no uncontrolled motion
+- **PWR-010** (Shared): Emergency backup battery. **Acceptance:** Backup supports safe stop, not routine cordless operation
+- **PWR-011** (Shared): Overcurrent/thermal fault. **Acceptance:** Electrical faults trigger independent protection
+- **PWR-012** (Shared): Power restoration. **Acceptance:** Robot does not auto-resume hazardous movement after power returns
+- **PWR-013** (Shared): Protective earth and leakage. **Acceptance:** Electrical design requires qualified review and appropriate protective devices
+- **PWR-014** (Shared): Reel and tether heat. **Acceptance:** Cable/reel thermal conditions stay within validated limits
+- **SAFE-001** (Shared): Independent safety controller. **Acceptance:** Safety stops work even if AI/coordinator fails
+- **SAFE-002** (Shared): Physical emergency stop. **Acceptance:** E-stop command de-energizes hazardous motion appropriately
+- **SAFE-003** (Shared): Child crosses route. **Acceptance:** Robot avoids or stops before unsafe proximity
+- **SAFE-004** (Shared): Pet near wheels. **Acceptance:** Robot avoids wheel/pet contact and stops when uncertain
+- **SAFE-005** (Shared): Person approaches arm. **Acceptance:** Arm slows or stops based on protective envelope
+- **SAFE-006** (Shared): Sensor failure. **Acceptance:** Safety-relevant sensor loss produces safe state
+- **SAFE-007** (Shared): Conflicting sensors. **Acceptance:** Inconsistent sensor readings trigger conservative response
+- **SAFE-008** (Shared): Communication loss. **Acceptance:** Robot enters safe state on critical communication loss
+- **SAFE-009** (Shared): Unexpected heat. **Acceptance:** Unplanned hot surface or steam triggers safe response
+- **SAFE-010** (Shared): Sharp tool interlock. **Acceptance:** Sharp attachments cannot activate outside protected conditions
+- **SAFE-011** (Shared): Chemical handling interlock. **Acceptance:** Cleaning chemicals are separated and access controlled
+- **SAFE-012** (Shared): Safe restart. **Acceptance:** Restart requires state verification and appropriate authorization
+- **SAFE-013** (Shared): Combined fault tests. **Acceptance:** Multi-fault scenarios are tested, not only single faults
+- **SAFE-014** (Shared): No safety bypass by AI. **Acceptance:** Learned plans cannot change safety limits
+- **SAFE-015** (Shared): Accessible emergency controls. **Acceptance:** Household member can command immediate stop
+- **SAFE-016** (Shared): Dropped object response. **Acceptance:** Robot protects people and isolates hazard
+- **SAFE-017** (Shared): Safe load release. **Acceptance:** Gripper power loss does not cause uncontrolled hazardous release
+- **SAFE-018** (Shared): Fire and smoke response. **Acceptance:** Robot stops hazardous actions and alerts household
+- **SAFE-019** (Shared): Wet floor warning. **Acceptance:** Robot reports slippery surfaces and restricts routes
+- **SAFE-020** (Shared): Human priority. **Acceptance:** Robot yields to people in shared spaces
+- **SEN-001** (Shared): Room mapping. **Acceptance:** System maintains navigable map of approved rooms
+- **SEN-002** (Shared): Object detection. **Acceptance:** Robot detects objects relevant to assigned tasks
+- **SEN-003** (Shared): Object pose estimation. **Acceptance:** Robot estimates object position and orientation with uncertainty
+- **SEN-004** (Shared): Person detection. **Acceptance:** Robot recognizes people as protected obstacles
+- **SEN-005** (Shared): Pet detection. **Acceptance:** Robot recognizes pets as protected obstacles
+- **SEN-006** (Shared): Depth sensing. **Acceptance:** Robot uses depth or equivalent geometry sensing
+- **SEN-007** (Shared): Lighting variation. **Acceptance:** Perception degrades safely under low or harsh light
+- **SEN-008** (Shared): Occlusion handling. **Acceptance:** Robot requests another viewpoint or abstains
+- **SEN-009** (Shared): Unknown object. **Acceptance:** Unknown objects are not manipulated without approved strategy
+- **SEN-010** (Shared): Sensor calibration. **Acceptance:** Calibration state is tracked and checked before tasks
+- **SEN-011** (Shared): Privacy controls. **Acceptance:** Local sensing follows household permissions and retention rules
+- **SEN-012** (Shared): Perception confidence. **Acceptance:** Low-confidence observations trigger verification or refusal
+- **ARM-001** (Shared): Dual-arm interface. **Acceptance:** Common controller supports two arm modules
+- **ARM-002** (Shared): Interchangeable end effector. **Acceptance:** Tool interface supports identified approved tools
+- **ARM-003** (Shared): Grasp planning. **Acceptance:** Robot selects validated grasp for object and load
+- **ARM-004** (Shared): Grip force limits. **Acceptance:** Robot constrains grip force to object-safe limits
+- **ARM-005** (Shared): Payload capacity. **Acceptance:** Manipulation refuses loads above rated capacity
+- **ARM-006** (Shared): Reach envelope. **Acceptance:** Arm cannot strike chassis, person, appliance or wall
+- **ARM-007** (Shared): Two-arm coordination. **Acceptance:** Two arms coordinate without self collision
+- **ARM-008** (Shared): Place verification. **Acceptance:** Robot confirms stable object placement
+- **ARM-009** (Shared): Object slip detection. **Acceptance:** Robot detects slip and responds safely
+- **ARM-010** (Shared): Tool identity check. **Acceptance:** Robot verifies tool type before use
+- **ARM-011** (Shared): Tool change interlock. **Acceptance:** Tool changes only in approved safe states
+- **ARM-012** (Shared): Travel carry posture. **Acceptance:** Load stays within approved stability envelope
+- **ARM-013** (Shared): Object handoff. **Acceptance:** Object transfer between arms is validated
+- **ARM-014** (Shared): Failure recovery. **Acceptance:** Failed grasp enters recovery or human assistance state
+- **ARM-015** (Shared): Contact force sensing. **Acceptance:** Robot detects unexpected contact and stops
+- **AI-001** (Shared): Local AI operation. **Acceptance:** Core command workflow works without external cloud
+- **AI-002** (Shared): Tenglish speech. **Acceptance:** System interprets approved Telugu-English mixed commands
+- **AI-003** (Shared): Intent extraction. **Acceptance:** System extracts requested task, destination and constraints
+- **AI-004** (Shared): Negation understanding. **Acceptance:** Do-not and cancellation instructions are respected
+- **AI-005** (Shared): Ambiguity handling. **Acceptance:** Ambiguous hazardous requests prompt clarification
+- **AI-006** (Shared): Task planning. **Acceptance:** AI maps intents only to approved robot skills
+- **AI-007** (Shared): Plan validation. **Acceptance:** Unsafe or unsupported steps are rejected before execution
+- **AI-008** (Shared): Household preferences. **Acceptance:** System stores approved family preferences locally
+- **AI-009** (Shared): Learning from demonstration. **Acceptance:** Demonstrations generate candidate skills, not automatic deployment
+- **AI-010** (Shared): Learning evaluation. **Acceptance:** New model is evaluated against held-out and safety scenarios
+- **AI-011** (Shared): Model versioning. **Acceptance:** Every deployed model has version and rollback
+- **AI-012** (Shared): No autonomous safety rewrite. **Acceptance:** AI cannot modify protective safety logic
+- **AI-013** (Shared): Confidence abstention. **Acceptance:** System declines uncertain high-risk actions
+- **AI-014** (Shared): Explainable status. **Acceptance:** Robot states what it plans, does, and cannot do
+- **AI-015** (Shared): Voice interruption. **Acceptance:** Stop/cancel commands preempt ordinary tasks
+- **AI-016** (Shared): Data privacy. **Acceptance:** Sensitive household recordings have consent and retention controls
+- **COORD-001** (Shared): Chore ownership. **Acceptance:** Every recurring chore has an assigned robot or explicit gap
+- **COORD-002** (Shared): Dependency scheduling. **Acceptance:** Tasks honor appliance and prerequisite dependencies
+- **COORD-003** (Shared): Parallel appliance cycles. **Acceptance:** Coordinator tracks running appliances while robots do other work
+- **COORD-004** (Shared): Shared-space arbitration. **Acceptance:** Robots coordinate room and corridor occupancy
+- **COORD-005** (Shared): Task priority. **Acceptance:** Safety and time-critical tasks outrank convenience tasks
+- **COORD-006** (Shared): Interruption recovery. **Acceptance:** Paused task resumes only after state revalidation
+- **COORD-007** (Shared): Failure escalation. **Acceptance:** Robot reports blocked or unsafe tasks
+- **COORD-008** (Shared): Completion evidence. **Acceptance:** Completed tasks include verification evidence
+- **COORD-009** (Shared): Daily checklist. **Acceptance:** System tracks every scheduled household chore
+- **COORD-010** (Shared): No task duplication. **Acceptance:** Coordinator prevents two robots conflicting on same resource
+- **COORD-011** (Shared): Offline coordinator failure. **Acceptance:** Robots enter locally safe state if coordinator unavailable
+- **COORD-012** (Shared): Manual override. **Acceptance:** Household can reschedule, cancel or approve allowed tasks
+- **SIM-001** (Shared): Deterministic test seeds. **Acceptance:** Simulations can be reproduced from seed and config
+- **SIM-002** (Shared): Physics validity declaration. **Acceptance:** Each scenario declares physical approximations and limits
+- **SIM-003** (Shared): Robot geometry model. **Acceptance:** Chassis, wheels and arm envelope represented
+- **SIM-004** (Shared): Dynamic obstacles. **Acceptance:** Simulated people and pets cross paths
+- **SIM-005** (Shared): Cable model. **Acceptance:** Cable routing and snag behavior represented at declared fidelity
+- **SIM-006** (Shared): Electrical fault injection. **Acceptance:** Mains loss, sensor faults and leakage hazards represented
+- **SIM-007** (Shared): Manipulation contact. **Acceptance:** Pick-place uses collision, grip and mass modeling
+- **SIM-008** (Shared): Acceptance assertions. **Acceptance:** Every scenario has measurable pass/fail criteria
+- **SIM-009** (Shared): Failure artifacts. **Acceptance:** Failed runs retain logs, replay and cause
+- **SIM-010** (Shared): Regression suite. **Acceptance:** Changed shared modules rerun all affected robot tests
+- **SIM-011** (Shared): Scenario coverage. **Acceptance:** Coverage includes normal, boundary and failure cases
+- **SIM-012** (Shared): No animation-only pass. **Acceptance:** Visual completion without assertions is not a pass
+- **SIM-013** (Shared): Digital twin fidelity roadmap. **Acceptance:** Liquid, cloth, thermal and cable fidelity gaps are tracked
+- **SIM-014** (Shared): Cross-robot integration. **Acceptance:** Kitchen, Clean and Laundry share interfaces in same home model
+- **KIT-001** (Kitchen): Professional throughput. **Acceptance:** Four-person rice/dal/sambar workflow targets approximately 60 min in validated equipment
+- **KIT-002** (Kitchen): Beverage preparation. **Acceptance:** Coffee/Bournvita prepared to household preferences
+- **KIT-003** (Kitchen): Ingredient inventory. **Acceptance:** Robot detects available and missing ingredients
+- **KIT-004** (Kitchen): Recipe selection. **Acceptance:** Robot selects approved recipe and servings
+- **KIT-005** (Kitchen): Vegetable preparation. **Acceptance:** Robot washes and cuts approved vegetables safely
+- **KIT-006** (Kitchen): Rice cooking. **Acceptance:** Robot executes validated rice recipe
+- **KIT-007** (Kitchen): Dal cooking. **Acceptance:** Robot executes validated dal recipe
+- **KIT-008** (Kitchen): Sambar cooking. **Acceptance:** Robot executes validated vegetable sambar recipe
+- **KIT-009** (Kitchen): Parallel cooking. **Acceptance:** Safe independent appliances run concurrently
+- **KIT-010** (Kitchen): Pressure cooker move. **Acceptance:** Robot moves cooker only when cooker-specific pressure and handling conditions permit
+- **KIT-011** (Kitchen): Cooker pressure check. **Acceptance:** Cooker is never opened until independent depressurization confirmation
+- **KIT-012** (Kitchen): Hot cookware grasp. **Acceptance:** Heat-safe grasp and load limits are validated
+- **KIT-013** (Kitchen): Food transfer to hot case. **Acceptance:** Cooked food is transferred hygienically without unacceptable spill
+- **KIT-014** (Kitchen): Serving tray capacity. **Acceptance:** Tray supports 4 coffee cups OR 4 x 200 ml glasses OR approved 5 L cooker load
+- **KIT-015** (Kitchen): Serving to people. **Acceptance:** Robot places food and drinks at safe agreed positions
+- **KIT-016** (Kitchen): Kitchen cleanup. **Acceptance:** Vessels, sink, stove and counters are cleaned hygienically
+- **KIT-017** (Kitchen): Food temperature verification. **Acceptance:** Critical food safety conditions are measured where required
+- **KIT-018** (Kitchen): Food contact separation. **Acceptance:** Food tools never share contaminated bathroom cleaning surfaces
+- **KIT-019** (Kitchen): Cooking Knowledge Factory and recipe verification. **Acceptance:** Independently generate, check, version and deploy 300 distinct executable household recipes with evidence of skill coverage and recipe approval
+- **KIT-020** (Kitchen): Cooking database deployment. **Acceptance:** Only versioned approved recipes deploy to Kitchen
+- **KIT-021** (Kitchen): Kitchen appliance failure. **Acceptance:** Robot safely stops and alerts on appliance anomaly
+- **KIT-022** (Kitchen): Ingredient substitution. **Acceptance:** Substitutions require approved constraints and preferences
+- **KIT-023** (Kitchen): Food quality feedback. **Acceptance:** Family feedback updates preferences only within validated bounds
+- **CLN-001** (Clean): Dust every room. **Acceptance:** Approved furniture and surfaces dusted
+- **CLN-002** (Clean): Appliance dusting. **Acceptance:** Appliances cleaned without electrical damage
+- **CLN-003** (Clean): Fan cleaning. **Acceptance:** Fan isolated from motion and electrical hazards before dusting
+- **CLN-004** (Clean): Sweep every room. **Acceptance:** Floors swept including accessible edges
+- **CLN-005** (Clean): Mop every room. **Acceptance:** Compatible floors mopped and drying monitored
+- **CLN-006** (Clean): Bathroom WC cleaning. **Acceptance:** WC seat, bowl and surrounding surfaces cleaned
+- **CLN-007** (Clean): Bathroom basin cleaning. **Acceptance:** Basin, taps and fixtures cleaned
+- **CLN-008** (Clean): Bathroom wall tiles. **Acceptance:** Accessible wall tiles and grout cleaned
+- **CLN-009** (Clean): Bathroom floor corners. **Acceptance:** Corners and edges cleaned and verified
+- **CLN-010** (Clean): Bathroom chemical control. **Acceptance:** Chemical compatibility and ventilation verified
+- **CLN-011** (Clean): Tool hygiene separation. **Acceptance:** Bathroom tools never contaminate living or food areas
+- **CLN-012** (Clean): Waste collection. **Acceptance:** Waste is collected and placed in assigned bins
+- **CLN-013** (Clean): Cleanliness verification. **Acceptance:** Visible residues trigger rework or escalation
+- **LND-001** (Laundry): Bedsheet removal. **Acceptance:** Used sheets removed without scattering contents
+- **LND-002** (Laundry): Approved quick wash. **Acceptance:** 15 minute cycle used only for suitable load/machine/fabric
+- **LND-003** (Laundry): Fresh bedding. **Acceptance:** Correct clean sheets and pillow covers installed
+- **LND-004** (Laundry): Washed bedding drying. **Acceptance:** Bedding hung on approved rods without falling
+- **LND-005** (Laundry): Daily clothes washing. **Acceptance:** Garments sorted by care instructions and washed
+- **LND-006** (Laundry): Dry garment pickup. **Acceptance:** Only dry clothes collected for folding
+- **LND-007** (Laundry): T-shirt identification and fold. **Acceptance:** T-shirt recognized and neatly folded
+- **LND-008** (Laundry): Jeans identification and fold. **Acceptance:** Jeans recognized and folded
+- **LND-009** (Laundry): Formal pants identification and fold. **Acceptance:** Formal pants recognized and crease protected
+- **LND-010** (Laundry): Pyjama identification and fold. **Acceptance:** Pyjama recognized and folded
+- **LND-011** (Laundry): Vest identification and fold. **Acceptance:** Vest recognized and folded
+- **LND-012** (Laundry): Briefs identification and fold. **Acceptance:** Briefs recognized and folded
+- **LND-013** (Laundry): Bra identification and fold. **Acceptance:** Bra recognized and cups/underwire protected
+- **LND-014** (Laundry): Saree identification and fold. **Acceptance:** Saree recognized and fabric/border protected
+- **LND-015** (Laundry): Formal shirt identification and fold. **Acceptance:** Formal shirt recognized and collar protected
+- **LND-016** (Laundry): Punjabi dress identification and fold. **Acceptance:** Outfit components recognized and folded appropriately
+- **LND-017** (Laundry): Long frock identification and fold. **Acceptance:** Long frock recognized and folded without fabric damage
+- **LND-018** (Laundry): Owner segregation. **Acceptance:** Garments associated with correct family member
+- **LND-019** (Laundry): Cupboard placement. **Acceptance:** Folded clothes placed in assigned shelves
+- **LND-020** (Laundry): Delicate fabric abstention. **Acceptance:** Uncertain care requirements trigger safe escalation
+- **OPS-001** (Coordinator): Full daily routine. **Acceptance:** Dust, sweep, mop, bedding, beverages, meals, laundry, bathroom and cleanup orchestrated
+- **OPS-002** (Coordinator): Morning drinks timing. **Acceptance:** Drinks scheduled for active household members
+- **OPS-003** (Coordinator): Bedding cycle dependency. **Acceptance:** Hang bedding only after wash completion
+- **OPS-004** (Coordinator): Cooking/cleaning coexistence. **Acceptance:** Robots operate concurrently without cross contamination
+- **OPS-005** (Coordinator): Household completion report. **Acceptance:** Each chore shows passed, failed, blocked or not run
+- **OPS-006** (Coordinator): Daily repeatability. **Acceptance:** Routine succeeds across varied simulated household states
+- **OPS-007** (Coordinator): Manual assistance request. **Acceptance:** Unsolved chores explicitly request help
+- **OPS-008** (Coordinator): Household safety summary. **Acceptance:** Report includes hazards, interventions and unresolved issues
+- **THM-001** (Shared): Intelligent air cooling. **Acceptance:** Automatically regulate airflow to maintain validated component temperatures
+- **THM-002** (Shared): Critical temperature monitoring. **Acceptance:** Monitor independent temperatures of power electronics, motor drives, processors and battery
+- **THM-003** (Shared): Protected ventilation. **Acceptance:** Use filtered protected intakes/exhausts; assess steam grease water and dust ingress
+- **THM-004** (Shared): Cooling fault response. **Acceptance:** Detect fan failure or blockage; derate and stop hazardous operation safely
+- **THM-005** (Shared): Thermal simulation coverage. **Acceptance:** Test normal, heavy workload, high ambient, stove heat, blocked intake and fan failure
+- **CLN-014** (Clean): Alternate-day full-home wet scrubbing. **Acceptance:** Every second day scrub every accessible approved floor zone; track exceptions
+- **CLN-015** (Clean): Separated clean and dirty water. **Acceptance:** Maintain distinct reservoirs and prohibit backflow
+- **CLN-016** (Clean): Surface-specific scrub pressure. **Acceptance:** Use verified pressure and brush type for each approved floor
+- **CLN-017** (Clean): Dirty water recovery. **Acceptance:** Collect spent solution instead of redistributing it
+- **CLN-018** (Clean): Edges and under-furniture coverage. **Acceptance:** Cover reachable edges, corners and under-furniture spaces safely
+- **CLN-019** (Clean): Coverage map. **Acceptance:** Record cleaned, missed and excluded zones with reason
+- **CLN-020** (Clean): Residual moisture control. **Acceptance:** Detect excessive moisture and prevent slip exposure
+- **CLN-021** (Clean): Water refill and wastewater emptying. **Acceptance:** Refill/empty autonomously only at approved station; otherwise request help
+- **CLN-022** (Clean): Incompatible surface exclusions. **Acceptance:** Prohibit wet scrubbing on sensitive floors and near electrical hazards
+- **CLN-023** (Clean): Every-two-days scheduling. **Acceptance:** Track successful cycle date and schedule next alternate-day cycle
+- **CLN-024** (Clean): Autonomous tool selection and attachment. **Acceptance:** Choose, dock, lock, verify, use and return required tool without human intervention
+- **CLN-025** (Clean): Task-surface tool selection. **Acceptance:** Match tool to cleaning action, surface and contamination zone
+- **CLN-026** (Clean): Tool inventory identification. **Acceptance:** Identify available tools and declared capabilities
+- **CLN-027** (Clean): Autonomous tool station navigation. **Acceptance:** Navigate and align at dock safely
+- **CLN-028** (Clean): Automatic secure tool lock. **Acceptance:** Engage mechanical lock and verify positive retention
+- **CLN-029** (Clean): Utility connection validation. **Acceptance:** Verify required power/data/fluid/vacuum connections
+- **CLN-030** (Clean): Incompatible tool interlock. **Acceptance:** Prohibit operation with incorrect or incompletely locked tool
+- **CLN-031** (Clean): Automatic tool return. **Acceptance:** Detach and return tool to assigned dock
+- **CLN-032** (Clean): Tool health and hygiene tracking. **Acceptance:** Track tool wear, cleanliness and service status
+- **CLN-033** (Clean): Cross-zone contamination prevention. **Acceptance:** Isolate bathroom tools from kitchen and living zones
+- **CLN-034** (Clean): Tool exchange failure recovery. **Acceptance:** Handle alignment, lock, connection and release faults safely
+- **CLN-035** (Clean): Tool ecosystem extensibility. **Acceptance:** Register compatible tools without redesigning core interface
+- **CLN-036** (Clean): Dedicated cleaning tool families. **Acceptance:** Separate tools for bathroom, fan, sweeping, mopping and scrubbing
+- **CLN-037** (Clean): Surface and contamination aware choice. **Acceptance:** Select according to surface, soil and hygiene category
+- **CLN-038** (Clean): Bathroom tool segregation. **Acceptance:** Prevent any bathroom tool from serving non-bathroom surfaces
+- **CLN-039** (Clean): Multiple tools per category. **Acceptance:** Support WC, basin, grout and tile tools as separate variants
+- **CLN-040** (Clean): Pre-operation identity verification. **Acceptance:** Check tool identity and attachment before activation
+- **CLN-041** (Clean): Dedicated tool docking locations. **Acceptance:** Return each identified tool to assigned location
+- **CLN-042** (Clean): Tool sanitation lifecycle. **Acceptance:** Clean/disinfect/replace tools according to zone-specific rules
+- **CLN-043** (Clean): Multi-tool workflow execution. **Acceptance:** Complete planned sequential tool swaps for whole-home clean
+- **KIT-024** (Kitchen): 300 approved executable recipes. **Acceptance:** Maintain at least 300 distinct approved recipes mapped to available robotic skills
+- **KIT-025** (Kitchen): Recipe data completeness. **Acceptance:** Specify ingredients quantities portions time and equipment
+- **KIT-026** (Kitchen): Executable skill conversion. **Acceptance:** Translate recipe instructions to bounded robot actions
+- **KIT-027** (Kitchen): Independent recipe checker. **Acceptance:** Independently check completeness safety and cooking logic
+- **KIT-028** (Kitchen): Portion scaling. **Acceptance:** Scale quantities for family size within verified bounds
+- **KIT-029** (Kitchen): Dietary and taste preferences. **Acceptance:** Honor ingredient exclusions diet spice and household preferences
+- **KIT-030** (Kitchen): Closed-loop cooking verification. **Acceptance:** Use suitable feedback in addition to timers
+- **KIT-031** (Kitchen): Recipe evidence tracking. **Acceptance:** Record recipe simulation results and separate physical test results
+- **KIT-032** (Kitchen): Unsupported recipe lockout. **Acceptance:** Refuse recipe execution when skills or equipment are unverified
+- **TOOL-001** (Shared): Tool connector mechanical standard. **Acceptance:** Define alignment envelope, retention strength and misconnection prevention
+- **TOOL-002** (Shared): Tool connector electrical/data standard. **Acceptance:** Define rated connectors, identification, isolation and disconnect rules
+- **TOOL-003** (Shared): Tool connector fluid standard. **Acceptance:** Define optional water/vacuum coupling, leak checks and dry-break rules
+- **TOOL-004** (Shared): Docking interlock. **Acceptance:** Prohibit powered hazardous tools while undocked or partially latched
+- **TOOL-005** (Shared): Tool capability registry. **Acceptance:** Provide machine-readable tool type, surfaces, loads, hygiene class and limits
+- **TOOL-006** (Shared): Tool station occupancy coordination. **Acceptance:** Prevent simultaneous conflicting dock use by multiple robots
+- **LOAD-001** (Shared): Payload mass and center-of-gravity estimation. **Acceptance:** Estimate mass and center of gravity with uncertainty bounds
+- **LOAD-002** (Shared): Safe batch planner. **Acceptance:** Partition divisible transport loads subject to weight, stability and volume limits
+- **LOAD-003** (Shared): Multi-trip completion accounting. **Acceptance:** Verify every item and trip; mark complete only after full manifest delivered
+- **LOAD-004** (Shared): Indivisible overweight fallback. **Acceptance:** Prohibit unsafe lifts and request assistance or approved handling device
+- **CABL-001** (Shared): Cable routed-length model. **Acceptance:** Estimate cable needed along actual path including furniture and turns
+- **CABL-002** (Shared): Bidirectional reel controller. **Acceptance:** Coordinate reel payout/retraction with motion without propulsive pull
+- **CABL-003** (Shared): Cable snag detection. **Acceptance:** Detect rising tension or stalled reel and stop safely
+- **CABL-004** (Shared): Cable pedestrian hazard monitoring. **Acceptance:** Stop or reroute on unsafe cable exposure to people and pets
+- **CABL-005** (Shared): Cable electrical thermal verification. **Acceptance:** Check voltage drop, current, reel winding temperature and protective isolation
+- **CABL-006** (Shared): Cable robot variant profiles. **Acceptance:** Select cable and reel configuration by kitchen/clean/laundry needs
+- **THERM-001** (Shared): Thermal warning thresholds. **Acceptance:** Define component-specific warning and shutdown thresholds from rated parts
+- **THERM-002** (Shared): Airflow and fan redundancy assessment. **Acceptance:** Detect inadequate airflow and define safe derating response
+- **THERM-003** (Shared): Kitchen airflow food hygiene. **Acceptance:** Keep exhaust/intake away from open food and stove flame
+- **RECP-001** (Kitchen): Recipe uniqueness definition. **Acceptance:** Count distinct preparation methods rather than trivial renamings
+- **RECP-002** (Kitchen): Recipe ingredient availability gate. **Acceptance:** Check ingredient inventory and permitted substitutions before cooking
+- **RECP-003** (Kitchen): Recipe allergen safety gate. **Acceptance:** Track allergens and forbid unapproved substitutions
+- **RECP-004** (Kitchen): Recipe stage and evidence ladder. **Acceptance:** Separate text-checked, simulated, physically demonstrated and repeatable recipe status
+- **RECP-005** (Kitchen): Recipe safety and taste evaluation. **Acceptance:** Verify food safety separately from household taste acceptance
+- **SCRB-001** (Clean): Floor material identification. **Acceptance:** Identify flooring and choose compatible wet cleaning method
+- **SCRB-002** (Clean): Scrub pass and overlap planning. **Acceptance:** Plan lanes and overlap to avoid uncleaned gaps
+- **SCRB-003** (Clean): Solution dosing bounds. **Acceptance:** Limit water and detergent by surface and soil
+- **SCRB-004** (Clean): Recovery tank capacity planning. **Acceptance:** Plan tank empty/refill trips before overflow or running dry
+- **SCRB-005** (Clean): Post-scrub quality evaluation. **Acceptance:** Detect missed soil and repeat or report with evidence
+- **SCRB-006** (Clean): Bathroom-specific sanitation segregation. **Acceptance:** Prevent toilet brush from contacting basin or non-toilet fixtures
+
+## Unresolved engineering parameters (not silently approved)
+- **Mobility:** 75° front steering: inner wheel angle or equivalent; geometry, turning radius, tip margin
+- **Chassis:** Chassis dimensions, wheelbase, track, total mass, payload and CG not verified
+- **Electrical:** Reel cable gauge, protection, length, leakage, outlet placement, voltage drop, thermal design
+- **Thermal:** Per-component rated temperatures, airflow, ingress protection, fan selection
+- **Manipulation:** Reach, degrees of freedom, force limits, grip retention, hot cooker restrictions
+- **Kitchen:** Exact 300 recipe catalog, cookware compatibility, physical equipment, food safety standards
+- **Clean:** Flooring types, scrubbing solution compatibility, clean/dirty tank size, tool docking geometry
+- **Laundry:** Washing machine interface, drying space, wardrobes, garment identification accuracy
+- **Household:** Measured floor plan, outlets, thresholds, corridors, no-go zones
+- **Simulation:** Physics engine versions, fidelity and computational budget
+- **Safety:** Independent safety engineering review and physical test plan
+
+## Traceability
+Every parent has nominal (-A) and boundary/fault (-B) acceptance check in workbook. These are verification slices; scenario oracles need concrete numeric bounds before execution. Priority simulations are separately specified in workbook.
+
+## Development-ready first sprint
+1. Establish typed module contracts: Motion, CableReel, ThermalSafety, ToolRegistry, Manipulation, TaskPlanner, SafetySupervisor.
+2. Implement simulation harness with deterministic clock, injected faults and event evidence.
+3. Run initial tests for MOB-011, PWR-003/004, THM-004, CLN-024 and KIT-032.
+4. Do not energize real mains, hot cookware or sharp tools before professional design reviews.
