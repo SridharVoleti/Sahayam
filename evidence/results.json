@@ -34,5 +34,9 @@
   "MOB-009": {
     "status": "implemented_unverified",
     "note": "Static doorway clearance checks for body, arms, load and cable; 12 tests written but not executed. Swept-path, threshold crossing and physical safety not validated."
+  },
+  "MOB-010": {
+    "status": "implemented_unverified",
+    "note": "Quasi-static anti-tip projected center-of-mass model, 12 unexecuted tests, engineering/cost estimate. Not connected to motor control or physical sensors; no hardware validation."
   }
 }
