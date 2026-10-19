@@ -26,5 +26,9 @@
   "MOB-007": {
     "status": "implemented_unverified",
     "note": "Reverse clearance model and 12 tests committed; tests not executed in verified runtime. Physical sensor/braking safety unvalidated."
+  },
+  "MOB-008": {
+    "status": "implemented_unverified",
+    "note": "Three-point maneuver planner and 12 tests committed; not executed. Swept-path geometry and physical safety unvalidated."
   }
 }
