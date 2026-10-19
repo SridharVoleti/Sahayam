@@ -38,5 +38,9 @@
   "MOB-010": {
     "status": "implemented_unverified",
     "note": "Quasi-static anti-tip projected center-of-mass model, 12 unexecuted tests, engineering/cost estimate. Not connected to motor control or physical sensors; no hardware validation."
+  },
+  "MOB-011": {
+    "status": "implemented_unverified",
+    "note": "Divisible payload planner and per-trip validation, 12 tests written not executed. Load mass and center of mass must be independently verified; no lifting hardware integrated."
   }
 }
