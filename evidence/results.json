@@ -1,1 +1,22 @@
-{}
+{
+  "MOB-001": {
+    "status": "implemented_unverified",
+    "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  },
+  "MOB-002": {
+    "status": "implemented_unverified",
+    "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  },
+  "MOB-003": {
+    "status": "implemented_unverified",
+    "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  },
+  "MOB-004": {
+    "status": "implemented_unverified",
+    "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  },
+  "MOB-005": {
+    "status": "implemented_unverified",
+    "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  }
+}
