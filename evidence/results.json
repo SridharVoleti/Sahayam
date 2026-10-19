@@ -18,5 +18,9 @@
   "MOB-005": {
     "status": "implemented_unverified",
     "note": "Python kinematic model and unit tests committed; tests not executed in verified runtime; physical validation pending."
+  },
+  "MOB-006": {
+    "status": "implemented_unverified",
+    "note": "Abstract speed planner and eight unit tests committed; test execution not yet verified. Speeds are provisional and physical braking unvalidated."
   }
 }
