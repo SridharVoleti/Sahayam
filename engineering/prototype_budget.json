@@ -92,7 +92,8 @@
     "No equipment purchases reported.",
     "Previous MOB-001..010 estimates are provisional and must be reconciled against these allocations; never added again.",
     "Full-size autonomy, 230V tether and safety certification not funded/validated by this initial prototype envelope.",
-    "MOB-011: optional future load cell + HX711 and mounting/calibration estimated ₹500–₹1,100; unquoted, unpurchased, must be accommodated within existing controller/sensors and fabrication envelopes. Current software incremental purchase cost ₹0."
+    "MOB-011: optional future load cell + HX711 and mounting/calibration estimated ₹500–₹1,100; unquoted, unpurchased, must be accommodated within existing controller/sensors and fabrication envelopes. Current software incremental purchase cost ₹0.",
+    "MOB-011 design input: a loaded 5 L cooker may weigh ~6–7 kg; evaluate provisional 10 kg supported-platform transport target, not a 7 kg educational-arm lifting target. Hot cooker handling and unvalidated liquid transport remain blocked. Motor/structure reinforcement cost TBD; keep ₹50,000 ceiling unchanged."
   ],
   "requirement_estimates": [
     {
@@ -105,7 +106,25 @@
         "controller_sensors",
         "tool_interface"
       ],
-      "notes": "Reuse existing controller, IMU and planned tray/arm. Do not double count; no procurement approved."
+      "notes": "Reuse existing controller, IMU and planned tray/arm. Do not double count; no procurement approved. Cooker scenario adds no quoted or purchased item; structural or drive upgrade pricing TBD.",
+      "design_cases": [
+        {
+          "name": "Loaded 5 L cooker",
+          "example_mass_kg": 7,
+          "indivisible": true,
+          "handling": "preloaded_tray_only",
+          "status": "design_target_unverified"
+        },
+        {
+          "name": "Rated prototype platform target",
+          "target_supported_payload_kg": 10,
+          "status": "unvalidated_pending_drive_and_stability_review"
+        }
+      ],
+      "pending_cost_review": [
+        "chassis_drive_steering",
+        "tool_interface"
+      ]
     }
   ]
 }
