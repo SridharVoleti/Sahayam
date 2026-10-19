@@ -1,0 +1,96 @@
+{
+  "project": "SAHAYAM",
+  "currency": "INR",
+  "budget_ceiling": 50000,
+  "updated_on": "2026-10-19",
+  "prototype_strategy": "One modular shared physical prototype; specialized capabilities phased",
+  "accounting_policy": "Subsystem allocations are envelopes, not spending. Charge each physical component once; cross-reference requirement IDs. Quoted costs require vendor/date; purchases require invoice evidence.",
+  "categories": [
+    {
+      "id": "chassis_drive_steering",
+      "name": "Chassis, drive and steering",
+      "allocated_inr": 12000,
+      "requirement_ids": [
+        "MOB-001",
+        "MOB-002",
+        "MOB-003",
+        "MOB-004",
+        "MOB-005",
+        "MOB-008"
+      ],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "controller_sensors",
+      "name": "Controller and sensors",
+      "allocated_inr": 7000,
+      "requirement_ids": [
+        "MOB-006",
+        "MOB-007",
+        "MOB-009",
+        "MOB-010"
+      ],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "power_safety",
+      "name": "Low-voltage power and safety",
+      "allocated_inr": 5000,
+      "requirement_ids": [
+        "MOB-006",
+        "MOB-007",
+        "MOB-010"
+      ],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "arm",
+      "name": "Basic robotic arm",
+      "allocated_inr": 7000,
+      "requirement_ids": [],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "cleaning",
+      "name": "Cleaning tool prototype",
+      "allocated_inr": 5000,
+      "requirement_ids": [],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "tool_interface",
+      "name": "Tool interface and fabrication",
+      "allocated_inr": 5000,
+      "requirement_ids": [],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    },
+    {
+      "id": "contingency",
+      "name": "Contingency",
+      "allocated_inr": 9000,
+      "requirement_ids": [],
+      "quoted_inr": 0,
+      "purchased_inr": 0,
+      "quote_status": "not_quoted"
+    }
+  ],
+  "purchases": [],
+  "quotes": [],
+  "notes": [
+    "No equipment purchases reported.",
+    "Previous MOB-001..010 estimates are provisional and must be reconciled against these allocations; never added again.",
+    "Full-size autonomy, 230V tether and safety certification not funded/validated by this initial prototype envelope."
+  ]
+}
