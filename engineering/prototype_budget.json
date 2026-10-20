@@ -290,6 +290,17 @@
         "tool_interface"
       ],
       "notes": "Reuse PWR-003 passive cable reel, no repeated motor/encoder count. Optional guides/markings ₹0–250; electrical and mechanical powered reel costs TBD and physical deployment blocked."
+    },
+    {
+      "requirement_id": "PWR-005",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 150,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "tool_interface"
+      ],
+      "notes": "Reuses localization camera and simulated cable reel. Optional dry unpowered cable markers/tape ₹0–150, ideally reusing PWR-002 measuring materials. Real cable tracking hardware TBD; no mains cabling purchase."
     }
   ],
   "supplier_listings": [
