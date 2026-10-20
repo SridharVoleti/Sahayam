@@ -31,7 +31,8 @@
         "MOB-007",
         "MOB-009",
         "MOB-010",
-        "MOB-014"
+        "MOB-014",
+        "MOB-015"
       ],
       "quoted_inr": 0,
       "purchased_inr": 0,
@@ -162,6 +163,18 @@
         "tool_interface"
       ],
       "notes": "Reuse wheel encoders and IMU; printed absolute-position tags may cost ₹50–200 and optional camera ₹500–1200 if none available. No purchases/quotes; cost not added to ₹50,000 envelope."
+    },
+    {
+      "requirement_id": "MOB-015",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 1350,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors",
+        "tool_interface"
+      ],
+      "notes": "Reuse sensors and camera. Optional bumper switches ₹150–450, supplemental ranging ₹300–900, pending actual validation. MOB-020 emergency stop separate and mandatory; avoid double charge."
     }
   ]
 }
