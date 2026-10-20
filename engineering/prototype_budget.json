@@ -2,7 +2,7 @@
   "project": "SAHAYAM",
   "currency": "INR",
   "budget_ceiling": 50000,
-  "updated_on": "2026-10-19",
+  "updated_on": "2026-10-20",
   "prototype_strategy": "One modular shared physical prototype; specialized capabilities phased",
   "accounting_policy": "Subsystem allocations are envelopes, not spending. Charge each physical component once; cross-reference requirement IDs. Quoted costs require vendor/date; purchases require invoice evidence.",
   "categories": [
@@ -125,6 +125,18 @@
         "chassis_drive_steering",
         "tool_interface"
       ]
+    },
+    {
+      "requirement_id": "MOB-012",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 500,
+      "optional_future_max_inr": 1400,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors",
+        "tool_interface"
+      ],
+      "notes": "Optional floor-facing sensor, mount and test thresholds; reuse existing IMU, controller and motors. Threshold crossing height and drive torque not physically validated; do not double count."
     }
   ]
 }
