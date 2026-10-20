@@ -62,5 +62,9 @@
   "MOB-016": {
     "status": "implemented_unverified",
     "note": "4-neighbor grid A* with inflated obstacles/boundaries; rejects stale/unknown maps, lost localization and unsupported shortcuts. 18 tests written not yet execution-verified. No real map, dynamic obstacle prediction, swept volume or physical motion."
+  },
+  "MOB-017": {
+    "status": "implemented_unverified",
+    "note": "FIFO single-lane multi-agent lease manager; stale leases require independent vacancy verification and supervisor reset; kinematic motion gate. 21 tests written, not executed. Physical networked robots and hardware corridor occupancy unvalidated; stranded robot intentionally blocks until safe recovery."
   }
 }
