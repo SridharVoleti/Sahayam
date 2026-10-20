@@ -257,6 +257,17 @@
         "power_safety"
       ],
       "notes": "No DIY 230V tether included in INR 50,000 initial physical prototype. Use already-allocated protected low-voltage supply. Qualified mains isolation, thermal/leakage/fault protection and cable architecture have TBD cost and must not be assumed paid for."
+    },
+    {
+      "requirement_id": "PWR-002",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 200,
+      "status": "planning_only_mains_blocked",
+      "funding_category_ids": [
+        "tool_interface"
+      ],
+      "notes": "Low-voltage route simulation uses existing supply; optional measuring/marking ₹0–200. Kitchen ≤20m study and Clean/Laundry ≤50m are NOT physical safety ratings. Mains tether and reel cost TBD, outside approved prototype BOM."
     }
   ],
   "supplier_listings": [
