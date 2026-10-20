@@ -45,7 +45,8 @@
       "requirement_ids": [
         "MOB-006",
         "MOB-007",
-        "MOB-010"
+        "MOB-010",
+        "MOB-020"
       ],
       "quoted_inr": 0,
       "purchased_inr": 0,
@@ -233,6 +234,39 @@
         "tool_interface"
       ],
       "notes": "Optional stow switches and brackets 150–450 INR, retention hardware 150–400 INR. Existing arm and controller reused; no actual purchases."
+    },
+    {
+      "requirement_id": "MOB-020",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 700,
+      "optional_future_max_inr": 2800,
+      "status": "mandatory_before_motorized_human_proximity_trials",
+      "funding_category_ids": [
+        "power_safety"
+      ],
+      "notes": "NC latching mushroom switch + appropriately engineered motor isolate/brake + wiring/protection; price allowance partly supplier-listed, not validated safety design. Procure only after electrical safety review. Fund within existing ₹5,000 power/safety allocation; cost overruns block powered trials."
+    }
+  ],
+  "supplier_listings": [
+    {
+      "requirement_id": "MOB-020",
+      "description": "LAY37 22mm latching 1NC emergency stop switch",
+      "supplier": "FlyRobo",
+      "url": "https://www.flyrobo.in/lay37-01zs-1normally-closed-self-locking-22mm-mushroom-head-emergency-stop-switch",
+      "listed_price_inr": 98,
+      "checked_on": "2026-10-20",
+      "status": "listed_price_not_quote_not_purchased",
+      "safety_caveat": "Verify contact data, component provenance and performance before selecting"
+    },
+    {
+      "requirement_id": "MOB-020",
+      "description": "Metal mushroom 1NC emergency stop switch",
+      "supplier": "RoboticsDNA",
+      "url": "https://roboticsdna.in/product/22mm-1nc-metal-mushroom-head-emergency-stop-push-switch-f-rotary/",
+      "listed_price_inr": 354,
+      "checked_on": "2026-10-20",
+      "status": "listed_price_not_quote_not_purchased",
+      "safety_caveat": "Verify contact data and actual safety design before selecting"
     }
   ]
 }
