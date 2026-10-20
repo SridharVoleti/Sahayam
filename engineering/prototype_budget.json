@@ -197,6 +197,18 @@
         "controller_sensors"
       ],
       "notes": "Run virtual Kitchen, Clean and Laundry agents using existing software; no new robots. Optional visible corridor status LED ₹0–250, not safety-rated. No quote or purchase."
+    },
+    {
+      "requirement_id": "MOB-018",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 500,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors",
+        "tool_interface"
+      ],
+      "notes": "Reuse controller, camera, localization and obstacle sensing. Optional floor tags ₹0–150 and docking switch ₹0–350; no purchases or vendor quotes. Dock charger not included."
     }
   ]
 }
