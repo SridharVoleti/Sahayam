@@ -221,6 +221,18 @@
         "tool_interface"
       ],
       "notes": "Reuses basic arm and controller allocations. Optional joint travel switches/brackets ₹150–450 and retention clips/pins ₹150–400; unquoted, unpurchased. Do not double count existing servos."
+    },
+    {
+      "requirement_id": "MOB-019",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 850,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors",
+        "tool_interface"
+      ],
+      "notes": "Optional stow switches and brackets 150–450 INR, retention hardware 150–400 INR. Existing arm and controller reused; no actual purchases."
     }
   ]
 }
