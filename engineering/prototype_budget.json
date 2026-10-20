@@ -96,7 +96,8 @@
     "Previous MOB-001..010 estimates are provisional and must be reconciled against these allocations; never added again.",
     "Full-size autonomy, 230V tether and safety certification not funded/validated by this initial prototype envelope.",
     "MOB-011: optional future load cell + HX711 and mounting/calibration estimated ₹500–₹1,100; unquoted, unpurchased, must be accommodated within existing controller/sensors and fabrication envelopes. Current software incremental purchase cost ₹0.",
-    "MOB-011 design input: a loaded 5 L cooker may weigh ~6–7 kg; evaluate provisional 10 kg supported-platform transport target, not a 7 kg educational-arm lifting target. Hot cooker handling and unvalidated liquid transport remain blocked. Motor/structure reinforcement cost TBD; keep ₹50,000 ceiling unchanged."
+    "MOB-011 design input: a loaded 5 L cooker may weigh ~6–7 kg; evaluate provisional 10 kg supported-platform transport target, not a 7 kg educational-arm lifting target. Hot cooker handling and unvalidated liquid transport remain blocked. Motor/structure reinforcement cost TBD; keep ₹50,000 ceiling unchanged.",
+    "PWR-001: mains tether not funded or physically authorized within first prototype; software precheck never energizes mains. Any mains build needs a separately qualified engineering safety case."
   ],
   "requirement_estimates": [
     {
@@ -245,6 +246,17 @@
         "power_safety"
       ],
       "notes": "NC latching mushroom switch + appropriately engineered motor isolate/brake + wiring/protection; price allowance partly supplier-listed, not validated safety design. Procure only after electrical safety review. Fund within existing ₹5,000 power/safety allocation; cost overruns block powered trials."
+    },
+    {
+      "requirement_id": "PWR-001",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": null,
+      "optional_future_max_inr": null,
+      "status": "physical_mains_blocked_pending_qualified_design",
+      "funding_category_ids": [
+        "power_safety"
+      ],
+      "notes": "No DIY 230V tether included in INR 50,000 initial physical prototype. Use already-allocated protected low-voltage supply. Qualified mains isolation, thermal/leakage/fault protection and cable architecture have TBD cost and must not be assumed paid for."
     }
   ],
   "supplier_listings": [
