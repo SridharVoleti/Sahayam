@@ -54,5 +54,9 @@
   "MOB-014": {
     "status": "implemented_unverified",
     "note": "Localization-loss latch with 3 healthy stationary absolute-reference fixes + supervisor release; kinematic simulator gate stops on loss. 18 tests written, not yet executed. No physical localization hardware, verified pose estimator, braking or actuator interlock."
+  },
+  "MOB-015": {
+    "status": "implemented_unverified",
+    "note": "Conservative 1-D stationary and approaching-obstacle stopping-distance speed gate + kinematic simulation hook. 18 tests written, execution unconfirmed. No 2D swept-volume collision, sensors, moving-pedestrian prediction, actual braking or safety-rated stop."
   }
 }
