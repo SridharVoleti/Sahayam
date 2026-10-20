@@ -42,5 +42,9 @@
   "MOB-011": {
     "status": "implemented_unverified",
     "note": "Payload planning updated with robot_lift vs preloaded_tray, hot-load refusal, liquid-validation gate and 7 kg indivisible cooker scenario. 18 tests written, not executed. Provisional 10 kg cargo-deck target unverified; no measured loaded center of mass, motor integration or physical safety validation."
+  },
+  "MOB-012": {
+    "status": "implemented_unverified",
+    "note": "Conservative uneven-floor transition decision gate; 12 tests written not executed. No sensor, dynamic wheel climb, actuator inhibit or physical threshold qualification. Optional hardware estimated ₹500–₹1,400 within existing budget."
   }
 }
