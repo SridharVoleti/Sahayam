@@ -85,3 +85,24 @@ def simulate_corridor_step(
     gated = Command(command.speed_mps if lease_valid else 0.0,
                     command.steering_deg, command.duration_s)
     return simulate_step(pose, gated, chassis, conditions)
+
+def recover_expired_corridor(
+    state: CorridorState, now_s: float, *,
+    independently_verified_empty: bool,
+    supervisor_reset: bool,
+    sensors_healthy: bool,
+) -> CorridorDecision:
+    """Resolve abandoned leases only after verified-vacant supervised recovery.
+
+    Without verified vacancy, intentionally deny traffic rather than risk a
+    false release. An expired owner's robot may still be physically inside.
+    """
+    if (not isfinite(now_s) or now_s < state.last_event_s
+            or not isfinite(state.lease_expires_s) or state.owner is None
+            or now_s < state.lease_expires_s):
+        return CorridorDecision(state, False, "no_recoverable_expired_lease")
+    if not (independently_verified_empty and supervisor_reset and sensors_healthy):
+        return CorridorDecision(state, False, "unsafe_stale_lease_recovery")
+    return CorridorDecision(
+        CorridorState(None, 0.0, state.waiting, now_s), False,
+        "expired_lease_cleared_for_next_waiter")
