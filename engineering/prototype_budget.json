@@ -186,6 +186,17 @@
         "tool_interface"
       ],
       "notes": "A* uses existing compute, camera/sensors. Optional printed room markers and measuring consumables ₹0–300, unquoted and unpurchased. Extra mapping sensors TBD if tests justify."
+    },
+    {
+      "requirement_id": "MOB-017",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 250,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors"
+      ],
+      "notes": "Run virtual Kitchen, Clean and Laundry agents using existing software; no new robots. Optional visible corridor status LED ₹0–250, not safety-rated. No quote or purchase."
     }
   ]
 }
