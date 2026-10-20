@@ -78,5 +78,9 @@
   "MOB-020": {
     "status": "implemented_unverified",
     "note": "Human safety overrides spill control, latched emergency stop, supervised reset and kinematic simulation stop; 20 written tests unexecuted. No physical E-stop circuit or real braking validation. Mandatory safety hardware cost ₹700–₹2,800 within existing budget allocation; motorized trials blocked until electrical/stop tests."
+  },
+  "PWR-001": {
+    "status": "implemented_unverified",
+    "note": "Hazard prerequisite policy implemented. 14 tests written but unexecuted. Module never authorizes actual mains energization. 230V tether and electrical isolation physically blocked pending qualified engineering review, certification and separate cost review; first prototype low-voltage only."
   }
 }
