@@ -86,5 +86,9 @@
   "PWR-002": {
     "status": "implemented_unverified",
     "note": "Variant-specific cable length/route + slack planning policy. 19 tests written not yet executed. Mains energization never authorized; 15–20m kitchen and up to 50m others are study ranges only; cable/reel engineering blocked and costs TBD."
+  },
+  "PWR-003": {
+    "status": "implemented_unverified",
+    "note": "Software-only tension and rate-limited payout planner stops robot if payout cannot keep up, sensor fails or cable route unsafe. 18 tests written, execution unconfirmed. No reel/actuator or live cable. Physical powered payout not funded."
   }
 }
