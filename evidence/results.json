@@ -94,5 +94,9 @@
   "PWR-004": {
     "status": "implemented_unverified",
     "note": "Software-only retraction planning preserves reserve slack and limits rate relative to robot approach. 18 tests written, not yet executed; powered reel, tension sensor, pinching and cable dynamics not validated. Shared PWR-003 spool reused at no extra cost."
+  },
+  "PWR-005": {
+    "status": "implemented_unverified",
+    "note": "2D cable path self-crossing and prospective robot crossing checks; 17 tests written unexecuted. No camera-based cord detection, finite-width swept-body collision, wheel sensing or live tether validation."
   }
 }
