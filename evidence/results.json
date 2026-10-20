@@ -66,5 +66,9 @@
   "MOB-017": {
     "status": "implemented_unverified",
     "note": "FIFO single-lane multi-agent lease manager; stale leases require independent vacancy verification and supervisor reset; kinematic motion gate. 21 tests written, not executed. Physical networked robots and hardware corridor occupancy unvalidated; stranded robot intentionally blocks until safe recovery."
+  },
+  "MOB-018": {
+    "status": "implemented_unverified",
+    "note": "Rotated footprint SAT checks against rectangular egress/circulation keep-out zones, boundary and localization gates. 18 tests written; execution unverified. Tether path and park approach only external assertions; no actual docking."
   }
 }
