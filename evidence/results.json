@@ -82,5 +82,9 @@
   "PWR-001": {
     "status": "implemented_unverified",
     "note": "Hazard prerequisite policy implemented. 14 tests written but unexecuted. Module never authorizes actual mains energization. 230V tether and electrical isolation physically blocked pending qualified engineering review, certification and separate cost review; first prototype low-voltage only."
+  },
+  "PWR-002": {
+    "status": "implemented_unverified",
+    "note": "Variant-specific cable length/route + slack planning policy. 19 tests written not yet executed. Mains energization never authorized; 15–20m kitchen and up to 50m others are study ranges only; cable/reel engineering blocked and costs TBD."
   }
 }
