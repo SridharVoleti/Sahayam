@@ -46,5 +46,9 @@
   "MOB-012": {
     "status": "implemented_unverified",
     "note": "Conservative uneven-floor transition decision gate; 12 tests written not executed. No sensor, dynamic wheel climb, actuator inhibit or physical threshold qualification. Optional hardware estimated ₹500–₹1,400 within existing budget."
+  },
+  "MOB-013": {
+    "status": "implemented_unverified",
+    "note": "Traction-confidence motion gate and 12 written tests, not executed. Confidence estimator, wet-floor physics, braking validation and actuator inhibit not integrated. Optional hardware cost ₹0–₹1,700 unquoted."
   }
 }
