@@ -68,3 +68,11 @@ def evaluate_travel_stow(obs: StowObservation) -> StowDecision:
     if not obs.tool_cool:
         return refuse("unsafe_tool_temperature")
     return StowDecision(True, "travel_configuration_verified")
+
+def simulate_stowed_travel(pose, command, chassis, conditions, observation: StowObservation):
+    """Apply MOB-019 travel gate to mobility simulator; not physical actuation."""
+    from .simulator import Command, simulate_step
+    verdict = evaluate_travel_stow(observation)
+    guarded = Command(command.speed_mps if verdict.travel_permitted else 0.0,
+                      command.steering_deg, command.duration_s)
+    return simulate_step(pose, guarded, chassis, conditions), verdict
