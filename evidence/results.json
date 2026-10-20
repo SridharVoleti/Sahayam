@@ -50,5 +50,9 @@
   "MOB-013": {
     "status": "implemented_unverified",
     "note": "Traction-confidence motion gate and 12 written tests, not executed. Confidence estimator, wet-floor physics, braking validation and actuator inhibit not integrated. Optional hardware cost ₹0–₹1,700 unquoted."
+  },
+  "MOB-014": {
+    "status": "implemented_unverified",
+    "note": "Localization-loss latch with 3 healthy stationary absolute-reference fixes + supervisor release; kinematic simulator gate stops on loss. 18 tests written, not yet executed. No physical localization hardware, verified pose estimator, braking or actuator interlock."
   }
 }
