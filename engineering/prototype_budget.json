@@ -30,7 +30,8 @@
         "MOB-006",
         "MOB-007",
         "MOB-009",
-        "MOB-010"
+        "MOB-010",
+        "MOB-014"
       ],
       "quoted_inr": 0,
       "purchased_inr": 0,
@@ -149,6 +150,18 @@
         "controller_sensors"
       ],
       "notes": "Reuse IMU, motor controller and encoders if adequate. Optional wheel tread upgrade ₹300–900 and optical sensing ₹300–800; no supplier quotes or purchases. Existing wheel cost must be offset if replaced."
+    },
+    {
+      "requirement_id": "MOB-014",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 1400,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "controller_sensors",
+        "tool_interface"
+      ],
+      "notes": "Reuse wheel encoders and IMU; printed absolute-position tags may cost ₹50–200 and optional camera ₹500–1200 if none available. No purchases/quotes; cost not added to ₹50,000 envelope."
     }
   ]
 }
