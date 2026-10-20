@@ -268,6 +268,17 @@
         "tool_interface"
       ],
       "notes": "Low-voltage route simulation uses existing supply; optional measuring/marking ₹0–200. Kitchen ≤20m study and Clean/Laundry ≤50m are NOT physical safety ratings. Mains tether and reel cost TBD, outside approved prototype BOM."
+    },
+    {
+      "requirement_id": "PWR-003",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 500,
+      "status": "planning_only_live_mains_blocked",
+      "funding_category_ids": [
+        "tool_interface"
+      ],
+      "notes": "Optional unpowered string/spool test hardware ₹0–500 only. Actual low-voltage motorized reel and qualified mains payout cost TBD, not included in ₹50,000. Reuse controller and localization."
     }
   ],
   "supplier_listings": [
