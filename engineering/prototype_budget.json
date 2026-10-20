@@ -175,6 +175,17 @@
         "tool_interface"
       ],
       "notes": "Reuse sensors and camera. Optional bumper switches ₹150–450, supplemental ranging ₹300–900, pending actual validation. MOB-020 emergency stop separate and mandatory; avoid double charge."
+    },
+    {
+      "requirement_id": "MOB-016",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 300,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "tool_interface"
+      ],
+      "notes": "A* uses existing compute, camera/sensors. Optional printed room markers and measuring consumables ₹0–300, unquoted and unpurchased. Extra mapping sensors TBD if tests justify."
     }
   ]
 }
