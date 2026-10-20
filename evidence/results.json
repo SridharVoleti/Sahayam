@@ -74,5 +74,9 @@
   "MOB-019": {
     "status": "implemented_unverified",
     "note": "Stow position, latch, tool, cargo, cable and temperature gating with simulator integration. 18 tests written, not executed. No real arm/hardware validation."
+  },
+  "MOB-020": {
+    "status": "implemented_unverified",
+    "note": "Human safety overrides spill control, latched emergency stop, supervised reset and kinematic simulation stop; 20 written tests unexecuted. No physical E-stop circuit or real braking validation. Mandatory safety hardware cost ₹700–₹2,800 within existing budget allocation; motorized trials blocked until electrical/stop tests."
   }
 }
