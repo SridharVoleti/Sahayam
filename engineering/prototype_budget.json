@@ -137,6 +137,18 @@
         "tool_interface"
       ],
       "notes": "Optional floor-facing sensor, mount and test thresholds; reuse existing IMU, controller and motors. Threshold crossing height and drive torque not physically validated; do not double count."
+    },
+    {
+      "requirement_id": "MOB-013",
+      "incremental_now_inr": 0,
+      "optional_future_min_inr": 0,
+      "optional_future_max_inr": 1700,
+      "status": "planning_only",
+      "funding_category_ids": [
+        "chassis_drive_steering",
+        "controller_sensors"
+      ],
+      "notes": "Reuse IMU, motor controller and encoders if adequate. Optional wheel tread upgrade ₹300–900 and optical sensing ₹300–800; no supplier quotes or purchases. Existing wheel cost must be offset if replaced."
     }
   ]
 }
